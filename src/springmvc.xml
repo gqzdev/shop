@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- 1.对象的管理（对象的创建，对象的依赖关系（UserService以来IserDAO）的维护） -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+	 http://www.springframework.org/schema/context 
+	 http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+	 http://www.springframework.org/schema/aop 
+	 http://www.springframework.org/schema/aop/spring-aop-4.2.xsd 
+	 http://www.springframework.org/schema/tx 
+	 http://www.springframework.org/schema/tx/spring-tx-4.2.xsd 
+	 http://www.springframework.org/schema/mvc 
+	 http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd ">
+	
+	<!--  1.扫描控制层  2.自动注入  3.视图解析器的配置  -->
+	
+	<!-- 扫描哪个包（包含子包）的类包含Controller的注解-->
+	<context:component-scan base-package="com.gqz.shop.controller"></context:component-scan>
+	
+	<!--  注解驱动      使用<mvc:annotation-driven>替代注解处理器和适配器的配置-->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!--  视图解析器    使用视图解析器 -->
+	<!-- Ajax请求是.htm请求.SpringMVC不会将数据转换为JSON数据 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!-- 配置自定义的异常处理器 CustomExceptionResolver -->
+	<!--<bean class="com.gqz.shop.util.CustomExceptionResolver"></bean>
+	
+	--><!-- 配置登录拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/*"/>
+			<bean class="com.gqz.shop.util.LoginIntecepter"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- 配置 spring mvc 文件上传的解析器-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5000000"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+	
+	<!-- 不拦截 jsp css img 等 -->
+	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+	<mvc:resources location="/userfiles/" mapping="/userfiles/**"></mvc:resources>
+	<mvc:resources location="/fckeditor/" mapping="/fckeditor/**"></mvc:resources>
+	<mvc:resources location="/fonts/" mapping="/fonts/**"></mvc:resources>
+	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
+	<mvc:resources location="/admin/css/" mapping="/admin/css/**"></mvc:resources>
+	<mvc:resources location="/admin/img/" mapping="/admin/img/**"></mvc:resources>
+	
+</beans>

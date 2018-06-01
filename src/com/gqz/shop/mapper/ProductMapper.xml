@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gqz.shop.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.gqz.shop.pojo.Product" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="new_price" property="newPrice" jdbcType="DOUBLE" />
+    <result column="old_price" property="oldPrice" jdbcType="DOUBLE" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="is_hot" property="isHot" jdbcType="INTEGER" />
+    <result column="pdate" property="pdate" jdbcType="TIMESTAMP" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="total" property="total" jdbcType="INTEGER" />
+    <result column="volume" property="volume" jdbcType="INTEGER" />
+    <result column="is_Pic" property="isPic" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.gqz.shop.pojo.Product" extends="BaseResultMap" >
+    <result column="pdesc" property="pdesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pid, pname, new_price, old_price, image, is_hot, pdate, cid, state, total, volume, 
+    is_Pic
+  </sql>
+  <sql id="Blob_Column_List" >
+    pdesc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.gqz.shop.pojo.ProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gqz.shop.pojo.ProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gqz.shop.pojo.ProductExample" >
+    delete from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gqz.shop.pojo.Product" >
+    insert into product (pid, pname, new_price, 
+      old_price, image, is_hot, 
+      pdate, cid, state, 
+      total, volume, is_Pic, 
+      pdesc)
+    values (#{pid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{newPrice,jdbcType=DOUBLE}, 
+      #{oldPrice,jdbcType=DOUBLE}, #{image,jdbcType=VARCHAR}, #{isHot,jdbcType=INTEGER}, 
+      #{pdate,jdbcType=TIMESTAMP}, #{cid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{total,jdbcType=INTEGER}, #{volume,jdbcType=INTEGER}, #{isPic,jdbcType=INTEGER}, 
+      #{pdesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gqz.shop.pojo.Product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="newPrice != null" >
+        new_price,
+      </if>
+      <if test="oldPrice != null" >
+        old_price,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="isHot != null" >
+        is_hot,
+      </if>
+      <if test="pdate != null" >
+        pdate,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="volume != null" >
+        volume,
+      </if>
+      <if test="isPic != null" >
+        is_Pic,
+      </if>
+      <if test="pdesc != null" >
+        pdesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="newPrice != null" >
+        #{newPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="oldPrice != null" >
+        #{oldPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="isHot != null" >
+        #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="pdate != null" >
+        #{pdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=INTEGER},
+      </if>
+      <if test="isPic != null" >
+        #{isPic,jdbcType=INTEGER},
+      </if>
+      <if test="pdesc != null" >
+        #{pdesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gqz.shop.pojo.ProductExample" resultType="java.lang.Integer" >
+    select count(*) from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product
+    <set >
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pname != null" >
+        pname = #{record.pname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newPrice != null" >
+        new_price = #{record.newPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.oldPrice != null" >
+        old_price = #{record.oldPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.image != null" >
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isHot != null" >
+        is_hot = #{record.isHot,jdbcType=INTEGER},
+      </if>
+      <if test="record.pdate != null" >
+        pdate = #{record.pdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cid != null" >
+        cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.total != null" >
+        total = #{record.total,jdbcType=INTEGER},
+      </if>
+      <if test="record.volume != null" >
+        volume = #{record.volume,jdbcType=INTEGER},
+      </if>
+      <if test="record.isPic != null" >
+        is_Pic = #{record.isPic,jdbcType=INTEGER},
+      </if>
+      <if test="record.pdesc != null" >
+        pdesc = #{record.pdesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update product
+    set pid = #{record.pid,jdbcType=INTEGER},
+      pname = #{record.pname,jdbcType=VARCHAR},
+      new_price = #{record.newPrice,jdbcType=DOUBLE},
+      old_price = #{record.oldPrice,jdbcType=DOUBLE},
+      image = #{record.image,jdbcType=VARCHAR},
+      is_hot = #{record.isHot,jdbcType=INTEGER},
+      pdate = #{record.pdate,jdbcType=TIMESTAMP},
+      cid = #{record.cid,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=INTEGER},
+      total = #{record.total,jdbcType=INTEGER},
+      volume = #{record.volume,jdbcType=INTEGER},
+      is_Pic = #{record.isPic,jdbcType=INTEGER},
+      pdesc = #{record.pdesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product
+    set pid = #{record.pid,jdbcType=INTEGER},
+      pname = #{record.pname,jdbcType=VARCHAR},
+      new_price = #{record.newPrice,jdbcType=DOUBLE},
+      old_price = #{record.oldPrice,jdbcType=DOUBLE},
+      image = #{record.image,jdbcType=VARCHAR},
+      is_hot = #{record.isHot,jdbcType=INTEGER},
+      pdate = #{record.pdate,jdbcType=TIMESTAMP},
+      cid = #{record.cid,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=INTEGER},
+      total = #{record.total,jdbcType=INTEGER},
+      volume = #{record.volume,jdbcType=INTEGER},
+      is_Pic = #{record.isPic,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gqz.shop.pojo.Product" >
+    update product
+    <set >
+      <if test="pname != null" >
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="newPrice != null" >
+        new_price = #{newPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="oldPrice != null" >
+        old_price = #{oldPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="isHot != null" >
+        is_hot = #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="pdate != null" >
+        pdate = #{pdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null" >
+        volume = #{volume,jdbcType=INTEGER},
+      </if>
+      <if test="isPic != null" >
+        is_Pic = #{isPic,jdbcType=INTEGER},
+      </if>
+      <if test="pdesc != null" >
+        pdesc = #{pdesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gqz.shop.pojo.Product" >
+    update product
+    set pname = #{pname,jdbcType=VARCHAR},
+      new_price = #{newPrice,jdbcType=DOUBLE},
+      old_price = #{oldPrice,jdbcType=DOUBLE},
+      image = #{image,jdbcType=VARCHAR},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      pdate = #{pdate,jdbcType=TIMESTAMP},
+      cid = #{cid,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      total = #{total,jdbcType=INTEGER},
+      volume = #{volume,jdbcType=INTEGER},
+      is_Pic = #{isPic,jdbcType=INTEGER},
+      pdesc = #{pdesc,jdbcType=LONGVARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gqz.shop.pojo.Product" >
+    update product
+    set pname = #{pname,jdbcType=VARCHAR},
+      new_price = #{newPrice,jdbcType=DOUBLE},
+      old_price = #{oldPrice,jdbcType=DOUBLE},
+      image = #{image,jdbcType=VARCHAR},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      pdate = #{pdate,jdbcType=TIMESTAMP},
+      cid = #{cid,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      total = #{total,jdbcType=INTEGER},
+      volume = #{volume,jdbcType=INTEGER},
+      is_Pic = #{isPic,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  
+  
+  <!-- 自定义 -->
+  <resultMap id="productPojoMap" type="com.gqz.shop.pojo.ProductPojo" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="new_price" property="newPrice" jdbcType="DOUBLE" />
+    <result column="old_price" property="oldPrice" jdbcType="DOUBLE" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="is_hot" property="isHot" jdbcType="INTEGER" />
+    <result column="pdate" property="pdate" jdbcType="TIMESTAMP" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="total" property="total" jdbcType="INTEGER" />
+    <result column="volume" property="volume" jdbcType="INTEGER" />
+    <result column="is_Pic" property="isPic" jdbcType="INTEGER" />
+    <result column="cname" property="cname" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectProductPojoByPid" parameterType="Integer" resultMap="productPojoMap" >
+    select p.* , c.cname from product p left join category c on p.cid=c.cid where p.pid=#{pid,jdbcType=INTEGER}
+  </select>
+</mapper>

@@ -1,0 +1,156 @@
+/*�����Զ�����ʽ��css�ļ�*/
+
+body {
+	margin-top: 20px;
+	margin: 0 auto;
+	width: 100%;
+}
+.carousel-inner .item img {
+	width: 100%;
+	height: 300px;
+}
+
+.clear{
+	clear:both;
+}
+
+.top{
+	width:1210px;
+	margin:20px auto;
+	overflow:hidden;
+}
+
+.top div{
+	
+}
+
+.search{
+	background-color: #FCFDEF;
+	padding:10px 200px 10px 0px;
+}
+
+.content{
+	width:1210px;
+	margin:0 auto;
+}
+
+.news{
+	border:1px solid #E7E7E7;
+	height:auto;
+	height:300px;
+}
+
+.mynav{
+	width:1210px;
+	margin:0 auto;
+}
+
+.myrow .col-md-10 div{
+	border-bottom:1px solid #E7E7E7;
+	border-left:1px solid #E7E7E7;
+	padding:0px;
+}
+
+/*modify*/
+.row{
+	width:100%;
+	height:auto;
+}
+
+.row p{margin:0;}
+
+.myrow .yes-right-border{
+	border-right:1px solid #E7E7E7;
+}
+.myrow .no-left-border{
+	border-left:0px;
+}
+.info-header{
+	border: 1px solid #e4e4e4; 
+	width: 930px; 
+	margin-bottom: 10px; 
+	margin: 0 auto; 
+	padding: 10px; 
+	margin-bottom: 10px;
+	background-color: #d3d3d3;
+	border-radius:4px;
+}
+.info-header1{
+	background-color: transparent;
+	margin: 0px;
+	padding:0px;
+}
+.info-body{
+	margin: 0 auto; 
+	width: 930px;
+	font-size:15px;
+}
+.info-img{
+	opacity: 1; 
+	width: 350px; 
+	height: 450px;
+}
+.info-right{
+	border: 1px solid #cccccc;
+}
+.info-desc{
+	border-bottom: 1px dotted #dddddd; 
+	width: 100%; 
+	margin: 10px 0 10px 0;
+}
+.info-desc-1{
+	width: 100%; 
+	margin: 10px 0 10px 0;
+}
+.info-color{
+	overflow:hidden;
+}
+.info-color-item{
+	border: 1px solid #faeac7; 
+	width:30px; 
+	float:left;
+}
+.info-body-desc{
+	background-color: #d3d3d3; 
+	width: 930px; 
+	padding: 10px 10px; 
+	margin: 10px 0 10px 0;
+}
+.info-body-cs{
+	margin-top: 10px; 
+	width: 900px;
+}
+.image-item1{
+	text-align:center;
+	height:200px;
+	padding:0px;
+}
+.image-item2{
+	text-align:center;
+	height:200px;
+	padding:10px 0px;
+}
+.image-item2-price{
+	color:#E4393C;
+	font-size:16px;
+}
+.image-item2-title a{
+	color:#666;
+}
+.tr1 th{
+	background-color: #EAEAEA !important;
+}
+.tr1 td{
+	background-color: #EAEAEA !important;
+}
+
+/*vue css */
+[v-cloak] {
+	display: none;
+}
+
+
+
+
+
+
