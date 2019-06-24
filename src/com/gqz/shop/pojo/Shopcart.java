@@ -11,6 +11,8 @@ public class Shopcart {
 
     private Double subtotal;
 
+    private Integer specid;//商品规格
+
     public Integer getSid() {
         return sid;
     }
@@ -49,5 +51,13 @@ public class Shopcart {
 
     public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
+    }
+
+    public Integer getSpecid() {
+        return specid;
+    }
+
+    public void setSpecid(Integer specid) {
+        this.specid = specid;
     }
 }

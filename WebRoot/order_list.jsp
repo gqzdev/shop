@@ -87,7 +87,12 @@
 
 						<tr class="active" v-for="orderitem in item" style="text-align:center">
 							<td><center><img :src="orderitem.image" v-on:click="showDetail(orderitem.pid)" width="70" height="60" /></center></td>
-							<td style="text-align:left"><a v-on:click="showDetail(orderitem.pid)"  target="_blank">{{orderitem.pname}}</a></td>
+							<td style="text-align:left">
+								<a v-on:click="showDetail(orderitem.pid)"  target="_blank">
+									{{orderitem.pname}} 
+								</a>
+								<span style="color:red;">{{orderitem.psize}} {{orderitem.pcolor}}</span>
+							</td>
 							<td>￥{{orderitem.newPrice}}</td>
 							<td>{{orderitem.count}}</td>
 							<td><span class="subtotal"  style="font-weight: bold;color:red">￥{{orderitem.subtotal}}</span></td>
@@ -170,7 +175,7 @@
 							//订单总价
 							for(var i=0;i<this.ordersList.length;i++){
 								this.oredersTotalList=this.ordersList[i][0].total;//订单总价
-							}
+							} 
 							this.total=res.data.total;
 							this.maxPage=res.data.maxPage;
 						},
@@ -179,6 +184,8 @@
 						}
 					);
 				},
+				
+				
 				//更改收货信息
 				changeAddr:function(){
 					alert("该功能还未实现！");					
@@ -257,6 +264,8 @@
 			},
 			created : function() {
 				this.pageHandler(1);
+				
+				
 				//获取用户信息
 				this.$http.post("userInfo",{emulateJSON:true}).then(
 					function(res){

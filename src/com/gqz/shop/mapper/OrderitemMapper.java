@@ -30,12 +30,11 @@ public interface OrderitemMapper {
     int updateByPrimaryKeySelective(Orderitem record);
 
     int updateByPrimaryKey(Orderitem record);
-    
+    //自定义 添加
     
     //查询订单项
     public List<OrderitemPojo> selectOrderitemPojoByOid(Integer oid);
     
     //评价制订的订单项
     public List<OrderitemPojo> selectOrderitemPojoByOidPid(Integer oid,Integer pid);
-   
 }

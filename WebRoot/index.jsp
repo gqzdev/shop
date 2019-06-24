@@ -99,6 +99,7 @@
 				<div class="col-md-2"	style="border: 1px solid #E7E7E7; border-right: 0; padding: 0;">
 					<img id="newBig" @click="showDetail(NewProduct[0].pid)" v-if="NewProduct.length>0" :src="NewProduct[0].image" width="205"	height="404" style="display: inline-block;" />
 				</div>
+				
 				<div class="col-md-10" id="newProducts">
 					<div class="col-md-6"
 						style="text-align: center; height: 200px; padding: 0px;">
@@ -106,6 +107,7 @@
 							<img @click="showDetail(NewProduct[1].pid)"  v-if="NewProduct.length>0" :src="NewProduct[1].image" width="516px" height="200px"	style="display: inline-block;"> 
 						</a>
 					</div>
+					
 					<div @click="showDetail(item.pid)" v-for="(item,index) in NewProduct" v-if="index>1" class="col-md-2 image-item2" :class="{'yes-right-border':index==4||index==10}">
 						<a href="#"> 
 							<img :src="item.image" width="130" height="130"	style="display: inline-block;"> 

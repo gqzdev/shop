@@ -65,10 +65,10 @@
 								<th width="15%">
 									图片
 								</th>
-								<th width="50%">
+								<th width="45%">
 									商品
 								</th>
-								<th width="10%">
+								<th width="5%">
 									价格
 								</th>
 								<th width="5%">
@@ -96,13 +96,14 @@
 								</td>
 								<td>
 									<a v-on:click="showDetail(item.pid)" target="_blank">{{item.pname}}</a>
+									<span style="color:red;">{{item.psize}}  {{item.pcolor}}</span>
 								</td>
 								<td>
 									￥{{item.newPrice}}
 								</td>
 								<td>
 									<input type="number" id="quantity" name="quantity" :value="item.count" 
-									  					min="1" step="1" @click="changeNumber(item,$event)" />
+									  			width="20px" min="1" step="1" @click="changeNumber(item,$event)" />
 								</td>
 								<td>
 									<span class="subtotal">￥{{item.subtotal}}</span>
@@ -205,7 +206,8 @@
 
 						},
 						function(res){
-
+							//请求失败
+							console.log(res);
 						}
 					);
 				},
@@ -238,7 +240,6 @@
 								continue;
 							}
 						}
-						alert(cartIds.length);
 						if(cartIds==""||cartIds.length==0){
 							alert("请选择你需要的商品，谢谢!");
 							return false;
@@ -252,7 +253,8 @@
 										location.href="order_info?oid="+res.data.result+"&total="+this.cartTotal;
 									},
 									function(res){
-	
+										//请求失败
+										console.log(res);
 									}
 							);
 						}

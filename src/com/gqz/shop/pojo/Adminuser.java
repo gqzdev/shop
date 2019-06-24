@@ -11,7 +11,7 @@ public class Adminuser {
 
     private Integer state;
 
-	public Integer getUid() {
+    public Integer getUid() {
         return uid;
     }
 
@@ -50,14 +50,4 @@ public class Adminuser {
     public void setState(Integer state) {
         this.state = state;
     }
-
-	@Override
-	public String toString() {
-		return "Adminuser [password=" + password + ", state=" + state
-				+ ", type=" + type + ", uid=" + uid + ", username=" + username
-				+ "]";
-	}
-    
-    
-    
 }

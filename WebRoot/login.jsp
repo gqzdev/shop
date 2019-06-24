@@ -132,8 +132,8 @@
 									}else if(res.data.result=="ok"){
 										this.checkResult="";
 										alert("登录成功!");
-										location.href="index";
-										//history.back();//返回上一页面
+										//location.href="index";
+										history.back();//返回上一页面
 									}else{
 										this.checkResult="用户名或密码错误";
 									}

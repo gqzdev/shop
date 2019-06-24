@@ -1,4 +1,4 @@
-/*�����Զ�����ʽ��css�ļ�*/
+/*ForFuture SHOP*/
 
 body {
 	margin-top: 20px;
@@ -149,7 +149,45 @@ body {
 	display: none;
 }
 
+.tex-o {
+	float: left;
+	font-size: 14px;
+	line-height: 80px;
+	padding-right: 20px;
+	color: #848484;
+}
 
+
+/*Size Color*/
+.inventory {
+	padding-top: 25px;
+}
+
+.inventory li {
+	float: left;
+	margin-right: 10px;
+}
+
+.inventory li a {
+	padding: 5px 9px;
+	color: #222222;
+	font-size: 16px;
+	border: #e3e3e3 solid 1px;
+	display: block;
+}
+
+.inventory li a:hover {
+	border: #f73a3a solid 1px;
+	text-decoration: none;
+	color: #f73a3a;
+}
+
+/*if Size or Size selected */
+.select_active{
+	width: auto;
+	border: #f73a3a solid 1px;
+	background-color:#f58004b5 ;
+}
 
 
 

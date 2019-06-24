@@ -16,26 +16,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="row">
 				<jsp:include page="left.jsp"></jsp:include>
 				<div class="span9">
-					<h1>
+					<h1 style="color:#ff9800">
 						商品列表
 					</h1>
-					<h4>请输入查询条件：</h4>
+					<h4 style="color:#0088cc">请输入查询条件：</h4>
 					<form class="form-horizontal">
-						<div class="control-group">
-						<fieldset>
-						<label class="control-label" for="input01">商品名称：</label>
-						<div class="controls">
-							<input type="text" name="pname" id="pname"/>
-						</div>
-						&nbsp;&nbsp;
-						<label class="control-label" for="input01">商品分类：</label>
-						<div class="controls">
-							<select name="cid" id="cid"></select>
-						</div>
-						&nbsp;&nbsp;
-						<div class="controls">
-						<button type="button" id="search" class="btn btn-primary">查询</button> 
-						</div>
+						<div class="control-group" style="text-align:center;">
+						<fieldset>							
+							<div >
+								商品名称：<input type="text" name="pname" id="pname"/>							
+								商品分类：<select name="cid" id="cid">	</select>
+								<button type="button" id="search" class="btn btn-primary">查询</button> 
+							</div>
 						</fieldset>
 						</div>
 					</form>
@@ -67,31 +59,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</thead>
 						
 						<tbody>
-							<c:forEach items="${productList}" var="product" varStatus="status">
-								<tr>
-									<td>${status.index+1 }</td>
-									<td>${product.pname }</td>
-									<td>${product.newPrice }</td>
-									<td>${product.oldPrice }</td>
-									<td>${product.volume }</td>
-									<td>${product.total }</td>
-									<td>
-										<a class="link-update" href="adminEdit/${product.pid }.htm">修改</a>
-										<a class="link-del" href="javascript:del(${product.pid })">删除</a>
-										<a class="link-del" href="#new-project">添加</a>
-									</td>
-								</tr>
-							
-							</c:forEach>
+							<!-- 
+								<c:forEach items="${productList}" var="product" varStatus="status">
+									<tr>
+										<td>${status.index+1 }</td>
+										<td>${product.pname }</td>
+										<td>${product.newPrice }</td>
+										<td>${product.oldPrice }</td>
+										<td>${product.volume }</td>
+										<td>${product.total }</td>
+										<td>
+											<a class="link-update" href="adminEdit/${product.pid }.htm">修改</a>
+											<a class="link-del" href="javascript:del(${product.pid })">删除</a>
+											<a class="link-del" href="#new-project">添加</a>
+										</td>
+									</tr>
+								</c:forEach>
+							 -->
 						</tbody>
 						
 					</table>	
 					
 					<!-- 分页start bootstrap分页pagination-->				
-					<div class="pagination">
-    					<center>
-    						<ul id="pagination1"></ul>
-    					</center>
+					<div class="pagination" style="text-align:center">
+    					<ul id="pagination1"></ul>
 					</div>
 					<!-- 分页end -->	
 				</div>
@@ -100,6 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</body>
 	<script type="text/javascript">
 		function load(url,params){
+			//分页
 			$.ajax({
 				url:url,
 				type:"post",
@@ -116,15 +108,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					//显示数据  使用jQuery的循环
 					$.each(data.list,function(i,n){
 						//创建一行
-						var tr=$("<tr></tr>");
+						var tr=$("<tr id='"+n.pid+"'></tr>");
 						tr.html(
 								"<td>"+(i+1)+"</td>"+
-								"<td>"+n.pname+"</td>"+
+								"<td >"+n.pname+"</td>"+
 								"<td>"+n.oldPrice+"</td>"+
 								"<td>"+n.newPrice+"</td>"+
 								"<td>"+n.total+"</td>"+
 								"<td>"+n.volume+"</td>"+
-								"<td><a href='javascript:modify("+n.pid+")'>修改</a>&nbsp;&nbsp;<a href='javascript:del("+n.pid+")'>删除</a></td>"
+								"<td>"
+									+"<a href='javascript:stock("+n.pid+")'>查看库存</a>&nbsp;&nbsp;"
+									+"<a href='javascript:addInventory("+n.pid+")'>添加规格</a>&nbsp;&nbsp;"
+									+"<a href='javascript:modify("+n.pid+")'>修改</a>&nbsp;&nbsp;"
+									+"<a cdel("+n.pid+")'>删除</a>"
+								+"</td>"
 						);
 						//添加一行tr到tbody中
 						$("tbody").append(tr);
@@ -149,7 +146,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					load(url,params);
 				}
 			});
+			
+			//获取商品信息分类
+			getCategory("getCategories");
 	    });
+		
+		//查看商品库存
+		function stock(pid){		
+			window.location.href="product_stock?pid="+pid;
+		}
+		
+		//添加规格
+		function addInventory(pid){		
+			window.location.href="product_inventory?pid="+pid;
+		}
+		
+		//删除
+		function del(pid){
+			$("#"+pid).hide();
+			$.post(
+				"delProduct",
+				{pid:pid},
+				function(data){
+					alert("删除成功！");
+				}
+			);
+		}
 	</script>
 	
 </html>

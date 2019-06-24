@@ -5,6 +5,7 @@ import com.gqz.shop.pojo.CommentExample;
 import com.gqz.shop.pojo.CommentPojo;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CommentMapper {
@@ -30,6 +31,8 @@ public interface CommentMapper {
 
     int updateByPrimaryKey(Comment record);
     
-    //
+    //自定义 添加
     List<CommentPojo> selectCommentPojoByPid(Integer pid);
+    
+    CommentPojo selectCommentCountByPid(Integer pid);
 }

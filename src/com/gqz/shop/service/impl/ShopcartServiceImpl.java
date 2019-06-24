@@ -30,7 +30,7 @@ public class ShopcartServiceImpl implements ShopcartService {
 
 	//分页
 	public PageInfo<ShopcartPojo> getCartByPage(Integer uid,int page,int pageSize) {
-		PageHelper.startPage(page,pageSize);
+		PageHelper.startPage(page,pageSize);		
 		List<ShopcartPojo> list = shopcartMapper.selectShopcartPojoByUid(uid);
 		changeProductList(list);
 		return new PageInfo<ShopcartPojo>(list);

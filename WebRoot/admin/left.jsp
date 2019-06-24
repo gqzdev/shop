@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<div class="span3">
+<div class="span2">
 	<div class="well" style="padding: 10px 0;">
 		<ul class="nav nav-list">
 		

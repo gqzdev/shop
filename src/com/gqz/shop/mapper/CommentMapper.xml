@@ -224,6 +224,9 @@
     where comid = #{comid,jdbcType=INTEGER}
   </update>
   
+  
+  
+  
   <!-- 自定义  两表联查 -->
   <resultMap id="commentPojoMap" type="com.gqz.shop.pojo.CommentPojo" >
     <id column="comid" property="comid" jdbcType="INTEGER" />
@@ -233,8 +236,12 @@
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="INTEGER" />
   </resultMap>
   <select id="selectCommentPojoByPid" parameterType="Integer" resultMap="commentPojoMap" >
     select c.*, u.username from comment c left join user u on c.uid=u.uid where c.pid=#{pid,jdbcType=INTEGER}
+  </select>
+  <select id="selectCommentCountByPid" parameterType="Integer" resultMap="commentPojoMap" >
+    select count(*) count from comment where pid=#{pid,jdbcType=INTEGER}
   </select>
 </mapper>

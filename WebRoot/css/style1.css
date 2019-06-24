@@ -19,10 +19,10 @@ body {
 	border-right:0;padding:0;
 	margin: 17px;
 }
-.col-md-2:HOVER{
-	border:3px solid #336699;
+.col-md-2:hover{
+	border:3px solid #fd3005;
 }
 .plist{
-	width: 1420px; 
+	width: 1400px; 
 	margin: 0 auto;
 }

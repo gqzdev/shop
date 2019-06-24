@@ -101,8 +101,9 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <!-- 重要部分 -->
   <!-- useGeneratedKeys="true" keyProperty="oid" 返回插入数据的主键key -->
-  <insert id="insert" parameterType="com.gqz.shop.pojo.Orders" useGeneratedKeys="true" keyProperty="oid">
+  <insert id="insert" parameterType="com.gqz.shop.pojo.Orders" keyProperty="oid" useGeneratedKeys="true">
     insert into orders (oid, total, ordertime, 
       state, uid, status, 
       number)
@@ -110,7 +111,7 @@
       #{state,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
       #{number,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.gqz.shop.pojo.Orders" useGeneratedKeys="true" keyProperty="oid">
+  <insert id="insertSelective" parameterType="com.gqz.shop.pojo.Orders" keyProperty="oid" useGeneratedKeys="true">
     insert into orders
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="oid != null" >
@@ -243,6 +244,7 @@
   </update>
   
   
+  <!-- 自定义方法 -->
   <!-- ordersList -->
   <resultMap id="OrdersPojoMap" type="com.gqz.shop.pojo.OrdersPojo" >
     <id column="oid" property="oid" jdbcType="INTEGER" />
@@ -265,5 +267,13 @@
   		left JOIN orderitem oi on o.oid=oi.oid  
   			left  JOIN product p on oi.pid=p.pid where o.uid =#{uid,jdbcType=INTEGER}
   </select>
+  
+  <!-- 后台管理查询订单 -->
+  <select id="selectOrdersPojo"  resultMap="OrdersPojoMap" >
+     select o.oid,o.uid,o.total,o.ordertime,o.state,o.number from orders o WHERE o.`status`=0
+        ORDER BY ordertime desc
+  </select>
+  
+  
   
 </mapper>

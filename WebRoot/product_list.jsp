@@ -55,13 +55,13 @@
 			<!-- 分类商品列表 end-->
 		</div>
 	
-		<!--分页 -->
+		<!--分页 start-->
 		<div style="width: 380px; margin: 0 auto; margin-top: 50px;">
 			<zpagenav v-bind:page="page" v-bind:page-size="pageSize" v-bind:total="total" 
 					v-bind:max-page="maxPage" v-on:pagehandler="pageHandler">
 			<zpagenav>
 		</div>
-		<!-- 分页结束 -->
+		<!-- 分页 end -->
 	</div>
 	
 	
@@ -86,6 +86,7 @@
 					//发送Ajax请求
 					//参数Parama  getQueryString方法【通过参数name获取URL的参数值】
 					var params={"cid":getQueryString("cid"),"page":page,"pageSize":this.pageSize};
+					
 					this.$http.post("getCateProduct",params,{emulateJSON:true}).then(
 						function(res){
 							this.productList=res.data.list;

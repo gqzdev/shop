@@ -32,6 +32,8 @@ public class ProductServiceImpl implements ProductService {
 		PageHelper.startPage(page, pageSize);
 		
 		ProductExample productExample = new ProductExample();
+		productExample.createCriteria().andStateEqualTo(0);//查询未删除的
+		productExample.setOrderByClause("pid desc");//通过pid desc降序查询
 		List<Product> list = productMapper.selectByExample(productExample);
 		
 		//保存分页对象
@@ -134,5 +136,15 @@ public class ProductServiceImpl implements ProductService {
 				product.setPname(product.getPname().substring(0, 8)+"...");
 			}
 		}
+	}
+
+	public int deleteProduct(Integer pid) {
+		Product product = productMapper.selectByPrimaryKey(pid);
+		product.setState(1);
+		return productMapper.updateByPrimaryKey(product);
+	}
+
+	public Product getProductByPid(Integer pid) {
+		return productMapper.selectByPrimaryKey(pid);
 	}
 }

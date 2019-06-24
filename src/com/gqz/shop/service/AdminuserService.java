@@ -20,6 +20,8 @@ public interface AdminuserService {
 	//获取adminlist
 	public List<Adminuser> getAdminUserList();
 	
+	public List<Adminuser> selectAdminuserByTerm(Adminuser adminuser);
+	
 	public Adminuser getAdminuserById(Integer uid);
 	
 	public int adminModify(Adminuser adminuser);

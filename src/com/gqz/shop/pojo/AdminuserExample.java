@@ -3,14 +3,6 @@ package com.gqz.shop.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * 
-* @ClassName: AdminuserExample
-* @Description: TODO(这里用一句话描述这个类的作用)
-* @author ganquanzhong
-* @date 2018-4-27 上午10:30:30
- */
 public class AdminuserExample {
     protected String orderByClause;
 
@@ -71,14 +63,6 @@ public class AdminuserExample {
         distinct = false;
     }
 
-    
-    /**
-     * 
-    * @ClassName: GeneratedCriteria
-    * @Description: TODO(这里用一句话描述这个类的作用)
-    * @author ganquanzhong
-    * @date 2018-4-27 上午10:36:12
-     */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
 

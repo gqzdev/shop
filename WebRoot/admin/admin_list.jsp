@@ -30,7 +30,25 @@
 					<h1>
 						管理员用户列表
 					</h1>
-					<table class="table table-bordered table-striped">
+					<!-- 查询表单 start -->
+					<form class="form-horizontal" method="post" action="selectAdminuserByTerm">
+						<fieldset>
+						用户名：
+						<input type="text" name="username" id="username"/>
+						&nbsp;&nbsp;
+						管理员类型：
+						<select id="type" name="type"> 
+							<option>-- 选择管理员类型 --</option> 
+							<option value="1">超级管理员</option> 
+							<option value="2">普通管理员</option> 
+						</select>
+						&nbsp;&nbsp;
+						<button id="search" type="submit" class="btn btn-primary" >查询</button> 
+						</fieldset>
+					</form>
+					<!-- 查询表单 start -->
+					<center style="color:red;font-size:20px;font-weight:bolder;">${msg }</center>
+					<table class="table table-bordered table-striped" <c:if test="${msg!=null }">style="visibility:hidden"</c:if>>	
 						<thead>
 							<tr>
 								<td colspan="2">
@@ -117,8 +135,7 @@
 										<div class="control-group">
 											<label class="control-label" for="select01">管理员类型</label>
 											<div class="controls">
-												<select id="type" name="type"> 
-													<option>-- 选择管理员类型 --</option> 
+												<select id="type" name="type" required="required"> 													
 													<option value="1">超级管理员</option> 
 													<option value="2">普通管理员</option> 
 												</select>
@@ -135,25 +152,6 @@
 							</fieldset>
 					</form>
 					<!-- 新增管理form end -->
-					
-					
-					<!-- test -->
-					<a id="btn_add"> <i class="icon-plus"> </i> 新增管理员</a>
-					
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        				<div class="modal-dialog" role="document">
-             				<div class="modal-content">
-             				
-				                <div class="modal-header">
-				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				                    <h4 class="modal-title" id="myModalLabel">新增</h4>
-				                </div>
-				                
-								
-							</div>	
-						</div>
-					</div>
-					<!-- test -->
 					
 				</div>
 			</div>

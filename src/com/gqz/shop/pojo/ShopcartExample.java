@@ -403,6 +403,66 @@ public class ShopcartExample {
             addCriterion("subtotal not between", value1, value2, "subtotal");
             return (Criteria) this;
         }
+
+        public Criteria andSpecidIsNull() {
+            addCriterion("specid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidIsNotNull() {
+            addCriterion("specid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidEqualTo(Integer value) {
+            addCriterion("specid =", value, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidNotEqualTo(Integer value) {
+            addCriterion("specid <>", value, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidGreaterThan(Integer value) {
+            addCriterion("specid >", value, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("specid >=", value, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidLessThan(Integer value) {
+            addCriterion("specid <", value, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidLessThanOrEqualTo(Integer value) {
+            addCriterion("specid <=", value, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidIn(List<Integer> values) {
+            addCriterion("specid in", values, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidNotIn(List<Integer> values) {
+            addCriterion("specid not in", values, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidBetween(Integer value1, Integer value2) {
+            addCriterion("specid between", value1, value2, "specid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecidNotBetween(Integer value1, Integer value2) {
+            addCriterion("specid not between", value1, value2, "specid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

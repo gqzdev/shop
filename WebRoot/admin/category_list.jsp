@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<td>${status.index+1 }</td>
 								<td>${category.cname}</td>
 								<td>
-									<a class="link-update" href="adminEdit/${category.cid }">修改</a>
+									<a class="link-update" href="#">修改</a>
 									<a class="link-del" href="javascript:del(${category.cid})">删除</a>
 								</td>
 							</tr>

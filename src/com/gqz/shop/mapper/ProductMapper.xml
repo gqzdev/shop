@@ -393,6 +393,7 @@
   </update>
   
   
+  
   <!-- 自定义 -->
   <resultMap id="productPojoMap" type="com.gqz.shop.pojo.ProductPojo" >
     <id column="pid" property="pid" jdbcType="INTEGER" />
@@ -412,4 +413,5 @@
   <select id="selectProductPojoByPid" parameterType="Integer" resultMap="productPojoMap" >
     select p.* , c.cname from product p left join category c on p.cid=c.cid where p.pid=#{pid,jdbcType=INTEGER}
   </select>
+  
 </mapper>

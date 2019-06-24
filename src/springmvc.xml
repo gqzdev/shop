@@ -16,16 +16,18 @@
 	 http://www.springframework.org/schema/mvc 
 	 http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd ">
 	
+	
 	<!--  1.扫描控制层  2.自动注入  3.视图解析器的配置  -->
 	
-	<!-- 扫描哪个包（包含子包）的类包含Controller的注解-->
+	<!-- 1、扫描哪个包（包含子包）的类包含Controller的注解-->
 	<context:component-scan base-package="com.gqz.shop.controller"></context:component-scan>
 	
 	<!--  注解驱动      使用<mvc:annotation-driven>替代注解处理器和适配器的配置-->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
+	
 	<!--  视图解析器    使用视图解析器 -->
-	<!-- Ajax请求是.htm请求.SpringMVC不会将数据转换为JSON数据 -->
+	<!-- Ajax请求是.htm请求   .SpringMVC不会将数据转换为JSON数据 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="suffix" value=".jsp"></property>
 	</bean>
@@ -33,7 +35,8 @@
 	<!-- 配置自定义的异常处理器 CustomExceptionResolver -->
 	<!--<bean class="com.gqz.shop.util.CustomExceptionResolver"></bean>
 	
-	--><!-- 配置登录拦截器 -->
+	-->
+	<!-- 配置登录拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/*"/>

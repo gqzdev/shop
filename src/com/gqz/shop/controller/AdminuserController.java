@@ -17,112 +17,121 @@ import com.gqz.shop.pojo.Adminuser;
 import com.gqz.shop.service.AdminuserService;
 import com.gqz.shop.util.MyException;
 
-
 /**
- * 知识点【@RequestMapping】
- * 	//使用RequestMapping注解   在类名前添加统一路径
-	配置@RequestMapping时可省略后缀(.htm),注意访问的时候不能省略
+ * 知识点【@RequestMapping】 //使用RequestMapping注解 在类名前添加统一路径
+ * 配置@RequestMapping时可省略后缀(.htm),注意访问的时候不能省略
  */
 @Controller
 @RequestMapping("/admin")
 public class AdminuserController {
 	@Autowired
 	private AdminuserService adminuserService;
-		
-	//登录
+
+	// 登录
 	@RequestMapping("/login")
-	public String login(Adminuser adminuser,HttpSession session){
-		//访问services
-//		System.out.println("正在login  ....");
-		
-		Adminuser admin = adminuserService.login(adminuser.getUsername(), adminuser.getPassword());
-//		System.out.println(adminuser.getUsername()+"   "+ adminuser.getPassword());
-		if (admin!=null) {
-//			System.out.println("登录成功！");
+	public String login(Adminuser adminuser, HttpSession session) {
+		// 访问services
+		// System.out.println("正在login  ....");
+
+		Adminuser admin = adminuserService.login(adminuser.getUsername(),adminuser.getPassword());
+		// System.out.println(adminuser.getUsername()+"   "+
+		// adminuser.getPassword());
+		if (admin != null) {
+			// System.out.println("登录成功！");
 			session.setAttribute("adminuser", admin);
 			return "index";
-		}
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("msg", "用户名或密码错误!");
+		}		
 		return "login";
 	}
-		
-	@RequestMapping("/adminlist")
-	public ModelAndView adminlist() throws MyException{
-		//模拟异常  测试自定义异常处理器
-//		List<Adminuser> list=new ArrayList<Adminuser>();
-//		if (list==null||list.size()==0) {
-//			throw new MyException("管理员列表为空，请稍后再试！！");
-//		}
-		//模拟异常 之 未知异常
-//		int i=1/0;
-		List<Adminuser> list = adminuserService.getAdminUserList();
+
+	// 根据用户名和管理员类型进行迷糊查询
+	@RequestMapping("/selectAdminuserByTerm")
+	public ModelAndView selectAdminuserByTerm(Adminuser adminuser) {
+		List<Adminuser> list = adminuserService.selectAdminuserByTerm(adminuser);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("adminlist", list);
-//		modelAndView.setViewName("/admin/admin_list.jsp");
+		if (list == null || list.size() == 0) {
+			modelAndView.addObject("msg", "没有查询结果,请更换查询条件!");
+		} else {
+			modelAndView.addObject("adminlist", list);
+		}
 		modelAndView.setViewName("admin_list");
 		return modelAndView;
 	}
-	
-	//通过分页查询管理员列表
+
+	@RequestMapping("/adminlist")
+	public ModelAndView adminlist() throws MyException {
+		// 模拟异常 测试自定义异常处理器
+		// List<Adminuser> list=new ArrayList<Adminuser>();
+		// if (list==null||list.size()==0) {
+		// throw new MyException("管理员列表为空，请稍后再试！！");
+		// }
+		// 模拟异常 之 未知异常
+		// int i=1/0;
+		List<Adminuser> list = adminuserService.getAdminUserList();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("adminlist", list);
+		// modelAndView.setViewName("/admin/admin_list.jsp");
+		modelAndView.setViewName("admin_list");
+		return modelAndView;
+	}
+
+	// 通过分页查询管理员列表
 	@RequestMapping("/adminListByPage")
 	@ResponseBody()
-	public PageInfo<Adminuser>adminListByPage(int page,int pageSize){
+	public PageInfo<Adminuser> adminListByPage(int page, int pageSize) {
 		return adminuserService.getAdminListByPage(page, pageSize);
 	}
-	
 
-	//使用RESTful风格
+	// 使用RESTful风格
 	@RequestMapping("/adminEdit/{uid}")
-	public ModelAndView adminEdit(@PathVariable()Integer uid){
-		//访问services
+	public ModelAndView adminEdit(@PathVariable() Integer uid) {
+		// 访问services
 		Adminuser admin = adminuserService.getAdminuserById(uid);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("admin", admin);
 		modelAndView.setViewName("/admin/edit_admin");
 		return modelAndView;
 	}
-	
-	
-	//修改
+
+	// 修改
 	@RequestMapping("adminModify")
-	public String adminModify(Adminuser adminuser){
-		//访问services
+	public String adminModify(Adminuser adminuser) {
+		// 访问services
 		adminuserService.adminModify(adminuser);
-		//重定向页面
+		// 重定向页面
 		return "redirect:/admin/adminlist";
 	}
-	
-	//添加
+
+	// 添加
 	@RequestMapping("/addAdmin")
-	public String addAdmin(Adminuser adminuser){
-		//访问services
-		
+	public String addAdmin(Adminuser adminuser) {
+		// 访问services
+
 		adminuserService.addAdmin(adminuser);
-		
-		//重定向页面
+
+		// 重定向页面
 		return "redirect:adminlist";
 	}
-	
-	//删除
-	
-	//@ResponseBody() 注解
+
+	// 删除
+
+	// @ResponseBody() 注解
 	@RequestMapping("/deleteAdmin")
 	@ResponseBody()
-	public String deleteAdmin(Integer uid){
-		
+	public String deleteAdmin(Integer uid) {
+
 		adminuserService.deleteAdmin(uid);
 		return "ok";
 	}
-	
-	//@ResponseBody() 注解
+
+	// @ResponseBody() 注解
 	@RequestMapping("/batchDel")
 	@ResponseBody()
-	public String batchDelAdmin(@RequestParam(value="uIds[]")Integer[] uIds){
+	public String batchDelAdmin(@RequestParam(value = "uIds[]") Integer[] uIds) {
 		for (int i = 0; i < uIds.length; i++) {
 			adminuserService.deleteAdmin(uIds[i]);
 		}
 		return "ok";
 	}
-		
+
 }

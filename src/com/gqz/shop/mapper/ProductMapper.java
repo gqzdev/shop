@@ -5,6 +5,7 @@ import com.gqz.shop.pojo.ProductExample;
 import com.gqz.shop.pojo.ProductPojo;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface ProductMapper {

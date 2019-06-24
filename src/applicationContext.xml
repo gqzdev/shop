@@ -4,15 +4,13 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">	
-	<context:component-scan base-package="com.gqz.shop"></context:component-scan>
-	
-	
 	
 	<!-- 加载配置文件 -->
 	<context:property-placeholder location="classpath:db.properties" />
 	
-	
-	
+	<!-- 扫描   动态注解-->
+	<context:component-scan base-package="com.gqz.shop"></context:component-scan>
+		
 	<!-- 使用C3P0数据库连接池   可以使用其他的数据库连接框架  比如阿里的druid id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${jdbc.driverClassName}" />
@@ -20,9 +18,6 @@
 		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-	
-	
-	
 	
 	
 	<!-- Spring jdbcTemplate 配置 -->

@@ -5,6 +5,7 @@ import com.gqz.shop.pojo.ShopcartExample;
 import com.gqz.shop.pojo.ShopcartPojo;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface ShopcartMapper {
@@ -29,6 +30,7 @@ public interface ShopcartMapper {
     int updateByPrimaryKeySelective(Shopcart record);
 
     int updateByPrimaryKey(Shopcart record);
+    
     
     //selectShopcartPojo
     List<ShopcartPojo> selectShopcartPojoByUid(Integer uid);

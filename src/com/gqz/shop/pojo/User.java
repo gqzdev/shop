@@ -90,16 +90,4 @@ public class User {
     public void setCode(String code) {
         this.code = code == null ? null : code.trim();
     }
-
-    
-	@Override
-	public String toString() {
-		return "User [addr=" + addr + ", code=" + code + ", email=" + email
-				+ ", name=" + name + ", password=" + password + ", phone="
-				+ phone + ", state=" + state + ", uid=" + uid + ", username="
-				+ username + "]";
-	}
-    
-    
-    
 }

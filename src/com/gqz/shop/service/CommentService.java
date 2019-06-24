@@ -11,4 +11,6 @@ public interface CommentService {
 	
 	//添加商品评论
 	public int add(Comment comment);
+	
+	public CommentPojo getCount(Integer pid);
 }

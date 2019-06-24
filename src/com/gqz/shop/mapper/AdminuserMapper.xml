@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gqz.shop.mapper.AdminuserMapper" >
-
-   <!-- 逆向工程 start -->
   <resultMap id="BaseResultMap" type="com.gqz.shop.pojo.Adminuser" >
     <id column="uid" property="uid" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
@@ -10,7 +8,6 @@
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
   </resultMap>
-  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -40,7 +37,6 @@
       </foreach>
     </where>
   </sql>
-  
   <sql id="Update_By_Example_Where_Clause" >
     <where >
       <foreach collection="example.oredCriteria" item="criteria" separator="or" >
@@ -70,12 +66,9 @@
       </foreach>
     </where>
   </sql>
-  
-  
   <sql id="Base_Column_List" >
     uid, username, password, type, state
   </sql>
-  
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gqz.shop.pojo.AdminuserExample" >
     select
     <if test="distinct" >
@@ -90,33 +83,28 @@
       order by ${orderByClause}
     </if>
   </select>
-  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from adminuser
     where uid = #{uid,jdbcType=INTEGER}
   </select>
-  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from adminuser
     where uid = #{uid,jdbcType=INTEGER}
   </delete>
-  
   <delete id="deleteByExample" parameterType="com.gqz.shop.pojo.AdminuserExample" >
     delete from adminuser
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  
   <insert id="insert" parameterType="com.gqz.shop.pojo.Adminuser" >
     insert into adminuser (uid, username, password, 
       type, state)
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{type,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
   </insert>
-  
   <insert id="insertSelective" parameterType="com.gqz.shop.pojo.Adminuser" >
     insert into adminuser
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -220,7 +208,6 @@
       state = #{state,jdbcType=INTEGER}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-  <!-- 逆向工程 end -->
   
   
   <!-- 自定义的 -->
@@ -230,6 +217,4 @@
     from adminuser
     where username = #{username,jdbcType=VARCHAR} and password =#{password,jdbcType=VARCHAR}
   </select>
-  
-  
 </mapper>

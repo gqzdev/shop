@@ -132,16 +132,4 @@ public class Product {
     public void setPdesc(String pdesc) {
         this.pdesc = pdesc == null ? null : pdesc.trim();
     }
-
-	@Override
-	public String toString() {
-		return "Product [cid=" + cid + ", image=" + image + ", isHot=" + isHot
-				+ ", isPic=" + isPic + ", newPrice=" + newPrice + ", oldPrice="
-				+ oldPrice + ", pdate=" + pdate + ", pdesc=" + pdesc + ", pid="
-				+ pid + ", pname=" + pname + ", state=" + state + ", total="
-				+ total + ", volume=" + volume + "]";
-	}
-    
-    
-    
 }

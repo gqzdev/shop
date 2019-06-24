@@ -26,27 +26,24 @@
 			<param-value>classpath:springmvc.xml</param-value>
 		</init-param>
 	</servlet>
-  <servlet>
-    <servlet-name>VerifyCodeServlet</servlet-name>
-    <servlet-class>com.gqz.shop.controller.VerifyCodeServlet</servlet-class>
-  </servlet>
-
-
-	<!-- Ajax请求是.htm请求.SpringMVC不会将数据转换为JSON数据 -->
+	<!-- Ajax请求是.htm请求   .SpringMVC不会将数据转换为JSON数据 -->
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
 		<!-- 拦截请求 -->  
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-  <servlet-mapping>
-    <servlet-name>VerifyCodeServlet</servlet-name>
-    <url-pattern>/VerifyCode</url-pattern>
-  </servlet-mapping>
+	<!-- 注册验证码 -->
+	<servlet>
+   	 	<servlet-name>VerifyCodeServlet</servlet-name>
+    	<servlet-class>com.gqz.shop.controller.VerifyCodeServlet</servlet-class>
+    </servlet>
+  	<servlet-mapping>
+    	<servlet-name>VerifyCodeServlet</servlet-name>
+    	<url-pattern>/VerifyCode</url-pattern>
+  	</servlet-mapping>
 	<!-- [Spring Web] end-->
-
-
-
+	
 
 	<!-- 编码过滤器 -->
 	<filter>

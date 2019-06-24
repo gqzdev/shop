@@ -26,4 +26,9 @@ public class CommentServiceImpl implements CommentService {
 		return result;
 	}
 
+	public CommentPojo getCount(Integer pid) {
+		
+		return commentMapper.selectCommentCountByPid(pid);
+	}
+
 }

@@ -9,6 +9,9 @@ package com.gqz.shop.pojo;
  */
 public class CommentPojo extends Comment{
 	private String username;
+	
+	
+	private Integer count;//评论数目
 
 	public String getUsername() {
 		return username;
@@ -17,4 +20,13 @@ public class CommentPojo extends Comment{
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	
 }

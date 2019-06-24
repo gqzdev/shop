@@ -18,6 +18,12 @@ public interface ProductService {
 	//添加商品
 	public int  insertProduct(Product product);
 	
+	//删除商品
+	public int  deleteProduct(Integer pid);
+	
+	//通过id查询product
+	public Product  getProductByPid(Integer pid);
+	
 	//获取商品图片-用于轮播
 	public PageInfo<Product> getProductPic();
 	

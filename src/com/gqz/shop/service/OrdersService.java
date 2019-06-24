@@ -43,4 +43,10 @@ public interface OrdersService {
 	public void delete(Integer oid);
 	
 	
+	//直接购买
+	public Integer insertOrdersByDirect(Integer uid,Integer pid,Integer count, Double total,Integer specid);
+
+	//后台管理订单
+	public PageInfo<OrdersPojo> getOrdersByPage(int page, int pageSize);
+	
 }

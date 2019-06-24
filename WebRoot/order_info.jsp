@@ -82,7 +82,10 @@
 									</center>
 								</td>
 								<td>
-									<a v-on:click="showDetail(item.pid)" target="_blank">{{item.pname}}</a>
+									<a v-on:click="showDetail(item.pid)" target="_blank">
+										{{item.pname}}   
+									</a>
+									<span style="color:red;">{{item.psize}}  {{item.pcolor}}</span>
 								</td>
 								<td>
 									￥{{item.newPrice}}

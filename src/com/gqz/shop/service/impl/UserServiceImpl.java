@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.gqz.shop.mapper.UserMapper;
 import com.gqz.shop.pojo.User;
 import com.gqz.shop.pojo.UserExample;
@@ -13,34 +15,34 @@ import com.gqz.shop.service.UserService;
 
 /**
  * 
-* @ClassName: UserServiceImpl
-* @Description: User的DAO
-* @author ganquanzhong
-* @date 2018-4-26 上午08:18:34
+ * @ClassName: UserServiceImpl
+ * @Description: User的DAO
+ * @author ganquanzhong
+ * @date 2018-4-26 上午08:18:34
  */
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper userMapper;
-	
-	//获取用户列表
+
+	// 获取用户列表
 	public List<User> getUserList() {
-		UserExample userExample=new UserExample();
+		UserExample userExample = new UserExample();
 		List<User> userList = userMapper.selectByExample(userExample);
 		return userList;
 	}
-	
+
 	public int save(User user) {
 		user.setState(0);
 		int restult = userMapper.insert(user);
 		return restult;
 	}
-	
+
 	public void delete(User user) {
 		userMapper.deleteByPrimaryKey(user.getUid());
 	}
-	
+
 	public int update(User user) {
 		return userMapper.updateByPrimaryKeySelective(user);
 	}
@@ -51,34 +53,54 @@ public class UserServiceImpl implements UserService {
 		List<User> list = userMapper.selectByExample(example);
 		return list;
 	}
-	
-	public User findByUid(Integer uid){
+
+	public User findByUid(Integer uid) {
 		return userMapper.selectByPrimaryKey(uid);
 	}
 
-	
-	//查询 模糊匹配like 
+	// 查询 模糊匹配like
 	public List<User> query(User user) {
 
-//		userMapper.selectByExample();
+		// userMapper.selectByExample();
 		return null;
 	}
 
-	//用户登录
+	// 用户登录
 	public User checkLogin(User user) {
 		UserExample example = new UserExample();
 		Criteria criteria = example.createCriteria();
-		
+
 		criteria.andUsernameEqualTo(user.getUsername());
 		criteria.andPasswordEqualTo(user.getPassword());
-		
+
 		List<User> userList = userMapper.selectByExample(example);
-		if (userList!=null && userList.size()!=0) {
+		if (userList != null && userList.size() != 0) {
 			return userList.get(0);
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
-	
+
+	// 条件查询
+	public List<User> selectUserByTerm(User user) {
+		UserExample userExample = new UserExample();
+		Criteria userCriteria = userExample.createCriteria();
+		if (user.getUid() != null && !"".equals(user.getUid())) {
+			userCriteria.andUidEqualTo(user.getUid());
+		}
+		if (user.getUsername() != null && !"".equals(user.getUsername())) {
+			userCriteria.andUsernameLike("%" + user.getUsername() + "%");
+		}
+		List<User> list = userMapper.selectByExample(userExample);
+		return list;
+	}
+
+	@Override
+	public PageInfo<User> getUserListByPage(int page, int pageSize) {
+		PageHelper.startPage(page, pageSize);
+		UserExample userExample = new UserExample();
+		List<User> list = userMapper.selectByExample(userExample);
+		return new PageInfo<User>(list);
+	}
+
 }

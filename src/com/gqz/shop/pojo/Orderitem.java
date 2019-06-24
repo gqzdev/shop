@@ -11,6 +11,8 @@ public class Orderitem {
 
     private Integer oid;
 
+    private Integer specid;
+
     public Integer getItemid() {
         return itemid;
     }
@@ -49,5 +51,13 @@ public class Orderitem {
 
     public void setOid(Integer oid) {
         this.oid = oid;
+    }
+
+    public Integer getSpecid() {
+        return specid;
+    }
+
+    public void setSpecid(Integer specid) {
+        this.specid = specid;
     }
 }

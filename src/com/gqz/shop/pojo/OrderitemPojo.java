@@ -22,6 +22,11 @@ public class OrderitemPojo extends Orderitem{
 	 private String state;
 	 private String number;
 	 
+	 //商品规格
+	 private String psize;//商品尺寸
+	    
+	 private String pcolor;//商品颜色
+	 
 	public String getPname() {
 		return pname;
 	}
@@ -78,5 +83,22 @@ public class OrderitemPojo extends Orderitem{
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+	
+	
+	public String getPsize() {
+		return psize;
+	}
+
+	public void setPsize(String psize) {
+		this.psize = psize;
+	}
+
+	public String getPcolor() {
+		return pcolor;
+	}
+
+	public void setPcolor(String pcolor) {
+		this.pcolor = pcolor;
 	}
 }

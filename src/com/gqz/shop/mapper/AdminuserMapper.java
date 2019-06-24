@@ -2,12 +2,12 @@ package com.gqz.shop.mapper;
 
 import com.gqz.shop.pojo.Adminuser;
 import com.gqz.shop.pojo.AdminuserExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface AdminuserMapper {
-	
-	// 逆向工程  start
     int countByExample(AdminuserExample example);
 
     int deleteByExample(AdminuserExample example);
@@ -29,10 +29,8 @@ public interface AdminuserMapper {
     int updateByPrimaryKeySelective(Adminuser record);
 
     int updateByPrimaryKey(Adminuser record);
+    
     // 逆向工程  end
-
-    //自定义
-    
+    //自定义    
     Adminuser selectByUsername(String username,String password);
-    
 }

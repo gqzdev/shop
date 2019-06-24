@@ -6,7 +6,7 @@ public class Category implements Serializable{
     /**
 	* @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
 	*/
-	private static final long serialVersionUID = 3140590850238017076L;
+	private static final long serialVersionUID = 1L;
 
 	private Integer cid;
 
@@ -14,13 +14,7 @@ public class Category implements Serializable{
 
     private Integer state;
 
-    @Override
-	public String toString() {
-		return "Category [cid=" + cid + ", cname=" + cname + ", state=" + state
-				+ "]";
-	}
-
-	public Integer getCid() {
+    public Integer getCid() {
         return cid;
     }
 

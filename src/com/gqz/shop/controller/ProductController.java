@@ -23,7 +23,7 @@ public class ProductController {
 	
 	@RequestMapping("/admin/listProduct")
 	@ResponseBody
-	public PageInfo<Product> listProduct(int page,int pageSize){
+	public PageInfo<Product> listProduct(int page,int pageSize){		
 		PageInfo<Product> listProductsByPage = productService.ListProductsByPage(page, pageSize);
 		return listProductsByPage;
 	}
@@ -50,6 +50,23 @@ public class ProductController {
 		}else {
 			return "0";
 		}
+	}
+		
+	@RequestMapping("/admin/delProduct")
+	@ResponseBody
+	public String delProduct(int pid){
+		int result = productService.deleteProduct(pid);
+		if (result!=0) {
+			return "ok";
+		}else {
+			return "error";
+		}
+	}
+	
+	@RequestMapping("/admin/getProductByPid")
+	@ResponseBody
+	public Product getProductByPid(int pid){
+		return  productService.getProductByPid(pid);
 	}
 	
 }

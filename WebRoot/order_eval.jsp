@@ -118,6 +118,7 @@
 							this.$http.post("evaluateOrders",{"pid":this.pid,"content":content},{emulateJSON:true}).then(
 									function(res){							
 										alert("评价成功！感谢你的支持！");
+										window.history.back();
 									},
 									function(res){
 										console.log(res);
