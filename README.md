@@ -13,10 +13,8 @@
 # <span style="color:red;font-size:20px;"><center>Future Shop</center></span>
 
 #### 项目介绍
->&emsp;&emsp;一个简单的商城Web项目,后台主要使用Spring、Spring MVC、MyBatis整合，api返回json数据；前台页面使用Vue框架进行数据渲染。改project中仍存在许多bug和不完善的地方，欢迎大家fork，pull request
- **<a href="http://ganquanzhong.top/shop/" target="_blank">演示地址</a>** 
-![shop_index-1](https://gitee.com/uploads/images/2018/0601/115724_87fe5c54_1134592.png "屏幕截图.png")
-![shop_index-2](https://gitee.com/uploads/images/2018/0601/115759_671eb7c1_1134592.png "屏幕截图.png")
+  
+ 
 
 #### 软件架构
 项目使用Spring、Spring MVC、MyBatis、Vue、Bootstrap等框架技术！
@@ -47,6 +45,11 @@ jdbc.password=##
 4. 新建 Pull Request
 
 ### 项目演示
+ 
+ 
+![shop_index-1](https://gitee.com/uploads/images/2018/0601/115724_87fe5c54_1134592.png "屏幕截图.png")
+![shop_index-2](https://gitee.com/uploads/images/2018/0601/115759_671eb7c1_1134592.png "屏幕截图.png")
+
 ![login](https://gitee.com/uploads/images/2018/0601/115559_f89c3492_1134592.png "屏幕截图.png")
 ![shop_info](https://gitee.com/uploads/images/2018/0601/115833_e1287f8c_1134592.png "屏幕截图.png")
 ![shop_search](https://gitee.com/uploads/images/2018/0601/115908_48117bba_1134592.png "屏幕截图.png")
