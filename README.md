@@ -20,10 +20,10 @@
  
 | desc | api |
 |:--|:--| 
-|获取商品分类  | http://ganquanzhong.top/shop/getCategories|
-|获取轮播商品图片|http://ganquanzhong.top/shop/getProductPic|
-|获取最新商品|http://ganquanzhong.top/shop/getNewProduct|
-|获取热门商品|http://ganquanzhong.top/shop/getHotProduct |
+|获取商品分类|<a href="http://ganquanzhong.top/shop/getCategories" target="_blank">getCategories</a>|
+|获取轮播商品图片|<a href="http://ganquanzhong.top/shop/getProductPic" target="_blank">getProductPic</a>|
+|获取最新商品|<a href="http://ganquanzhong.top/shop/getNewProduct" target="_blank">getNewProduct</a>|
+|获取热门商品|<a href="http://ganquanzhong.top/shop/getHotProduct" target="_blank">getHotProduct</a>|
 
  
 
