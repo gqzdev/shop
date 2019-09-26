@@ -14,6 +14,17 @@
 
 #### 项目介绍
   
+>&emsp;&emsp;后台主要使用Spring、Spring MVC、MyBatis整合，api返回json数据；前台页面使用Vue框架进行数据渲染。
+>项目中仍存在许多bug和不完善的地方，欢迎大家fork，pull request
+> **<a href="http://ganquanzhong.top/shop/" target="_blank">演示地址</a>** 
+ 
+| desc | api |
+|:--|:--| 
+|获取商品分类  | http://ganquanzhong.top/shop/getCategories|
+|获取轮播商品图片|http://ganquanzhong.top/shop/getProductPic|
+|获取最新商品|http://ganquanzhong.top/shop/getNewProduct|
+|获取热门商品|http://ganquanzhong.top/shop/getHotProduct |
+
  
 
 #### 软件架构
@@ -21,8 +32,9 @@
 
 #### 安装及使用教程
 
+```java
 1.将项目导入
-   	
+
 2修改数据库连接信息
 jdbc.username=##
 jdbc.password=##
@@ -35,7 +47,7 @@ jdbc.password=##
 4.更具自己图片路劲不同，
   在CommonUtils类中修改
   public static String path="E:\\ShopFile\\upload";//根据自己的路径设定
-
+```
 
 #### 参与贡献
 
