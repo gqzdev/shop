@@ -13,14 +13,13 @@
 # <span style="color:red;font-size:20px;"><center>Future Shop</center></span>
 
 #### 项目介绍
-一个简单的商城Web项目后台主要使用Spring、Spring MVC、MyBatis。前台页面使用Vue框架项目中仍存在许多bug，读者可以进行修改调试
- **项目演示地址：http://ganquanzhong.top/shop/** 
+>&emsp;&emsp;一个简单的商城Web项目,后台主要使用Spring、Spring MVC、MyBatis整合，api返回json数据；前台页面使用Vue框架进行数据渲染。改project中仍存在许多bug和不完善的地方，欢迎大家fork，pull request
+ **<a href="http://ganquanzhong.top/shop/" target="_blank">演示地址</a>** 
 ![shop_index-1](https://gitee.com/uploads/images/2018/0601/115724_87fe5c54_1134592.png "屏幕截图.png")
 ![shop_index-2](https://gitee.com/uploads/images/2018/0601/115759_671eb7c1_1134592.png "屏幕截图.png")
 
 #### 软件架构
-项目使用Spring、Spring MVC、MyBatis、Vue等框架技术！
-
+项目使用Spring、Spring MVC、MyBatis、Vue、Bootstrap等框架技术！
 
 #### 安装及使用教程
 
